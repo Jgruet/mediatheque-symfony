@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "firstName": "John Ronald Reuel",
+    "lastName": "Tolkien",
+    "birthDate": "1892-01-03",
+    "death": "1973-09-02",
+    "biography": "John Ronald Reuel Tolkien, plus connu sous la forme J. R. R. Tolkien, est un écrivain, poète, philologue, essayiste et professeur d’université britannique, né le 3 janvier 1892 à Bloemfontein (État libre d'Orange) et mort le 2 septembre 1973 à Bournemouth (Royaume-Uni). Ses deux romans les plus connus, Le Hobbit et Le Seigneur des anneaux, prennent place dans l'univers de fiction de la Terre du Milieu dont il développe la géographie, les peuples, l'histoire et les langues durant la majeure partie de sa vie."
+  },
+  {
+    "id": 2,
+    "firstName": "Ian",
+    "lastName": "Flemming",
+    "birthDate": "1908-05-28",
+    "death": "1964-08-12",
+    "biography": "Ian Fleming, né le 28 mai 1908 à Londres dans le quartier de Mayfair et mort le 12 août 1964 à Canterbury, est un romancier d'espionnage britannique, journaliste, et officier du renseignement naval, connu principalement pour avoir été l'auteur de la série de romans d’espionnage James Bond."
+  },
+  {
+    "id": 3,
+    "firstName": "Frank",
+    "lastName": "Herbert",
+    "birthDate": "1920-10-8",
+    "death": "1986-02-11",
+    "biography": "Frank Herbert, né Frank Patrick Herbert, Jr. le 8 octobre 1920 à Tacoma dans l'État de Washington et mort le 11 février 1986 (à 65 ans) à Madison dans le Wisconsin, est un écrivain américain, auteur de romans de science-fiction."
+  }
+]

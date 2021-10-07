@@ -1,0 +1,23 @@
+{% extends "public/base.html.twig" %} {% block body %}
+<h2>The book</h2>
+<div>
+  {{ dump(book) }}
+</div>
+
+{{
+  render(
+    controller('App\\Controller\\AuthorsController::getAuthorInfos', {
+      id: book[0]['authorId']
+    })
+  )
+}}
+
+{{
+  render(
+    controller('App\\Controller\\BooksController::getBooksByStyle', {
+      styles: book[0]['styles'],
+      exclude: book[0]['id']
+    })
+  )
+}}
+{%endblock %}

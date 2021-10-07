@@ -1,0 +1,47 @@
+[
+  {
+    "id": 1,
+    "authorId": 1,
+    "cote": 2005,
+    "title": "Lord of the rings",
+    "release": "1954",
+    "styles": ["novel", "fantasy", "medieval"],
+    "synopsis": "Non, ils ne pouvaient pas prendre les aigles dès le début, arrêtez avec ça !"
+  },
+  {
+    "id": 2,
+    "authorId": 1,
+    "cote": 2006,
+    "title": "Beren & Luthien",
+    "release": "2017",
+    "styles": ["novel", "fantasy", "medieval"],
+    "synopsis": "Comme Aragorn et Arwen, en mieux"
+  },
+  {
+    "id": 3,
+    "authorId": 1,
+    "cote": 2007,
+    "title": "The silmarillion",
+    "release": "1977",
+    "styles": ["mythology", "fantasy", "medieval"],
+    "synopsis": "La bible du monde de Tolkien"
+  },
+  {
+    "id": 4,
+    "authorId": 2,
+    "cote": 2200,
+    "title": "Casino Royale",
+    "release": "1953",
+    "styles": ["adventure", "spy", "action"],
+    "synopsis": "Il perd au backjack, s'énerve, couche avec la plus belle femme qu'il trouve."
+  },
+  {
+    "id": 5,
+    "authorId": 2,
+    "cote": 2205,
+    "title": "Docteur No",
+    "release": "1958",
+    "styles": ["novel", "fantasy", "thriller"],
+    "synopsis": "James Bond contre Docteur No, cela fait-il de James Bond une version armée de Oui-Oui ?"
+  }
+]
