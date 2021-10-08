@@ -1,0 +1,19 @@
+{% extends "public/base.html.twig" %} {% block body %}
+<section class="my-5">
+  <div class="row d-flex justify-content-center">
+    <div class="col-8">
+      <h2 class="text-center">
+        Document with author's lastname first letter = {{ tata }}
+      </h2>
+      <div class="mt-5">
+        <ul>
+          {{
+            dump(toto)
+          }}
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+{%endblock %}

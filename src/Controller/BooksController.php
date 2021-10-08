@@ -2,6 +2,8 @@
 
 namespace App\Controller;
 
+use App\Repository\BookRepository;
+use App\Repository\DocumentRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Finder\Finder;
 use Symfony\Component\HttpFoundation\File\File;
@@ -58,6 +60,73 @@ class BooksController extends AbstractController
 
         return $this->render('public/books/single-book.html.twig', [
             'book' => $book,
+        ]);
+    }
+
+    #[Route('/nb_page', name: 'book-by-nb-page')]
+    public function getBookByNbPage(Request $request, BookRepository $bookRepository): Response
+    {
+        $nb_page = $request->query->has('min') ? $request->query->get('min') : null;
+        if ($nb_page != null) {
+            $bigBooks = $bookRepository->findBigBooks($nb_page);
+            return $this->render('public/books/big-book.html.twig', [
+                'nb_page' => $nb_page,
+                'bigBooks' => $bigBooks,
+            ]);
+        }
+    }
+
+    #[Route('/id_range', name: 'book-by-id-range')]
+    public function getBookByIdRange(Request $request, DocumentRepository $bookRepository): Response
+    {
+        $start = $request->query->has('min') ? $request->query->get('min') : null;
+        $stop = $request->query->has('max') ? $request->query->get('max') : null;
+        if ($start != null && $stop != null) {
+            $titles = $bookRepository->findBooksTitleByRangeId($start, $stop);
+            return $this->render('public/books/book-id-range.html.twig', [
+                'titles' => $titles,
+                'start' => $start,
+                'stop' => $stop,
+            ]);
+        }
+    }
+
+    #[Route('/author_name_start_by', name: 'doc-author-name-start-by')]
+    public function getDocByStart(Request $request, DocumentRepository $documentRepository): Response
+    {
+        $start = $request->query->has('s') ? $request->query->get('s') : null;
+        if ($start != null) {
+            $documents = $documentRepository->findDocumentsByAuthorFirstLetter($start);
+            return $this->render('public/books/author-start-by.html.twig', [
+                "toto" => $documents,
+                "tata" => $start,
+            ]);
+        }
+    }
+
+    #[Route('/author_name_start_by_and_category', name: 'doc-author-name-start-by-and-cat')]
+    public function getDocByStartAndCat(Request $request, DocumentRepository $documentRepository): Response
+    {
+        $start = $request->query->has('s') ? $request->query->get('s') : null;
+        $cat = $request->query->has('c') ? $request->query->get('c') : null;
+
+        if ($start != null) {
+            $documents = $documentRepository->findDocumentsByAuthorFirstLetterAndCat($start, $cat);
+            return $this->render('public/books/author-start-by-and-category.html.twig', [
+                "toto" => $documents,
+                "tata" => $start,
+                "tutu" => $cat
+            ]);
+        }
+    }
+
+    #[Route('/cd-great-duration', name: 'cd-great-duration')]
+    public function findCdByDuration(DocumentRepository $documentRepository): Response
+    {
+        $cds = $documentRepository->findCdByDuration();
+        return $this->render('public/books/cd-great-duration.html.twig', [
+            "cds" => $cds,
+
         ]);
     }
 
@@ -120,6 +189,7 @@ class BooksController extends AbstractController
             'book' => $book,
         ]);
     }
+
 
     public function getBooksByStyle(array $styles, int $exclude)
     {

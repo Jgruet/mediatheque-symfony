@@ -25,7 +25,8 @@ class Book extends Document
 
     public function getId(): ?int
     {
-        return $this->id;
+        //return $this->id;
+        return parent::getId();
     }
 
     public function getNbPage(): ?int

@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+
+<title>Edit Book</title>
+
+{% block body %}
+    <h1>Edit Book</h1>
+
+    {{ include('book_form/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('book_form_index') }}">back to list</a>
+
+    {{ include('book_form/_delete_form.html.twig') }}
+{% endblock %}

@@ -2,7 +2,8 @@
 
 namespace App\DataFixtures;
 
-use Faker;
+use Faker\Factory;
+use Faker\ORM\Doctrine\Populator;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 use App\Entity\Author;
@@ -15,8 +16,8 @@ class AppFixtures extends Fixture
 {
     public function load(ObjectManager $manager)
     {
-        $generator = Faker\Factory::create();
-        $populator = new Faker\ORM\Doctrine\Populator($generator, $manager);
+        $generator = Factory::create();
+        $populator = new Populator($generator, $manager);
         $populator->addEntity(Author::class, 5, [
             'lastName' => function () use ($generator) {
                 return $generator->lastName();

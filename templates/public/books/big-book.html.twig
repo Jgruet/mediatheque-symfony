@@ -1,0 +1,21 @@
+{% extends "public/base.html.twig" %} {% block body %}
+<section class="my-5">
+  <div class="row d-flex justify-content-center">
+    <div class="col-8">
+      <h2 class="text-center">
+        Books whos gettin' more than {{ nb_page }} pages
+      </h2>
+      <div class="mt-5">
+        <ul>
+          {% for book in bigBooks %}
+          <li class="my-3">
+            title : {{ book.title }} - has {{ book.nbPage }} pages
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+{%endblock %}

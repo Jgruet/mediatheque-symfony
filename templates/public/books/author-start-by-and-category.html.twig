@@ -1,0 +1,39 @@
+{% extends "public/base.html.twig" %} {% block body %}
+<section class="my-5">
+  <div class="row d-flex justify-content-center">
+    <div class="col-8">
+      <h2 class="text-center">
+        Document with author's lastname first letter = {{ tata }} and from
+        {{ tutu }} category
+      </h2>
+      <div class="mt-5">
+        <ul>
+          {% for obj in toto %}
+          {{
+            dump(obj)
+          }}
+          titre :
+          {{
+            obj.title
+          }}
+          <br />
+          author :
+          {{
+            obj.author.firstName
+          }}
+          {{
+            obj.author.lastName
+          }}
+          <br />
+          categories : {% for category in obj.category %}
+          {{
+            category.name
+          }}
+          {% endfor %} {% endfor %}
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+{%endblock %}
