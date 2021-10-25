@@ -6,10 +6,13 @@ use App\Repository\AuthorRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=AuthorRepository::class)
+ * @Assert\Callback({"App\Validator\AuthorValidator", "validate"})
  */
+
 class Author
 {
     /**
@@ -22,11 +25,17 @@ class Author
     /**
      * @ORM\Column(type="string", length=255)
      */
+    #[Assert\Regex(
+        pattern: '/\d/',
+        match: false,
+        message: 'Your name cannot contain a number',
+    )]
     private $lastName;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
+    #[Assert\NotBlank]
     private $firstName;
 
     /**

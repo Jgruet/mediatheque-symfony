@@ -17,6 +17,9 @@
   </thead>
   <tbody>
     {% for book in books %}
+    {{
+      dump(book)
+    }}
     <tr>
       <td>{{ book.id }}</td>
       <td>{{ book.title }}</td>

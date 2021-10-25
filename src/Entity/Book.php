@@ -5,29 +5,20 @@ namespace App\Entity;
 use App\Repository\BookRepository;
 use Doctrine\ORM\Mapping as ORM;
 use App\Entity\Document;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=BookRepository::class)
  */
 class Book extends Document
 {
-    /**
-     * @ORM\Id
-     * @ORM\GeneratedValue
-     * @ORM\Column(type="integer")
-     */
-    private $id;
 
     /**
      * @ORM\Column(type="integer")
      */
+    #[Assert\LessThan(2001, null, 'please its too big')]
+    #[Assert\GreaterThan(100000, null, 'please its too small')]
     private $nb_page;
-
-    public function getId(): ?int
-    {
-        //return $this->id;
-        return parent::getId();
-    }
 
     public function getNbPage(): ?int
     {

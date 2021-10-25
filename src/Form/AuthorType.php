@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Author;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -13,8 +14,7 @@ class AuthorType extends AbstractType
     {
         $builder
             ->add('lastName')
-            ->add('firstName')
-        ;
+            ->add('firstName');
     }
 
     public function configureOptions(OptionsResolver $resolver): void

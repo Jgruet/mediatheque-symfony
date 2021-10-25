@@ -21,10 +21,16 @@ class AuthorFormController extends AbstractController
         ]);
     }
 
-    #[Route('/new', name: 'author_form_new', methods: ['GET','POST'])]
+    #[Route('/new', name: 'author_form_new', methods: ['GET', 'POST'])]
     public function new(Request $request): Response
     {
         $author = new Author();
+
+        // default data
+        $author->setLastName('Toto');
+        $author->setFirstName('Gentil');
+        // end default data
+
         $form = $this->createForm(AuthorType::class, $author);
         $form->handleRequest($request);
 
@@ -50,7 +56,8 @@ class AuthorFormController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}/edit', name: 'author_form_edit', methods: ['GET','POST'])]
+    // param converter, ici capable de faire le lien entre id de la route et id de $author - magic -
+    #[Route('/{id}/edit', name: 'author_form_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Author $author): Response
     {
         $form = $this->createForm(AuthorType::class, $author);
@@ -71,7 +78,7 @@ class AuthorFormController extends AbstractController
     #[Route('/{id}', name: 'author_form_delete', methods: ['POST'])]
     public function delete(Request $request, Author $author): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$author->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $author->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($author);
             $entityManager->flush();
