@@ -30,14 +30,13 @@
     {% block javascripts %}{% endblock %}
   </head>
   <body>
-    {{ include('public/partials/navbar.html.twig') }}
-    {{ include('public/partials/header.html.twig') }}
+    {{ include('front-office/partials/navbar.html.twig') }}
     {% block body %} {%endblock %}
 
     {% if ipVisitor is defined and favLang is defined and browser is defined %}
-      {{ include('public/partials/footer.html.twig', {'ip' : ipVisitor, 'lang': favLang, 'browser': browser}) }}
+      {{ include('front-office/partials/footer.html.twig', {'ip' : ipVisitor, 'lang': favLang, 'browser': browser}) }}
     {% else %}
-      {{ include('public/partials/footer.html.twig') }}
+      {{ include('front-office/partials/footer.html.twig') }}
     {% endif %}
 
 

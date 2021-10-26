@@ -14,7 +14,7 @@ class PublicController extends AbstractController
     #[Route('/', name: 'home')]
     public function index(Request $request): Response
     {
-        return $this->render('public/index.html.twig', [
+        return $this->render('front-office/index.html.twig', [
             'controller_name' => 'PublicController',
             'nom_de_la_variable' => 'toto',
         ]);
@@ -23,7 +23,7 @@ class PublicController extends AbstractController
     #[Route('/presentation', name: 'presentation')]
     public function presentation(): Response
     {
-        return $this->render('public/presentation.html.twig', [
+        return $this->render('front-office/presentation.html.twig', [
             'controller_name' => 'PublicController',
         ]);
     }

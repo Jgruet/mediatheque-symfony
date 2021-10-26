@@ -1,0 +1,64 @@
+{% extends "front-office/base.html.twig" %} {% block body %}
+<div class="container">
+  <div class="row">
+    <div class="text-center">
+      <h1>Les livres</h1>
+      <p>
+        Il existe 2 moyens de consulter des livres sur le projet, via le Finder
+        (qui lit un fichier json dans le dossier /public) et via Doctrine
+        (systeme de repository et entité).
+      </p>
+    </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Pages avec Finder</th>
+                <th scope="col">Pages avec Doctrine</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    <a href={{path("front-office-books-finder-books")}}>Tous les livres du fichier json</a>
+                </td>
+                <td>
+                    <a href={{path("front-office-books-book-by-nb-page")}}?min=200>Livre contenant au moins xxx pages ( ?min=xxx )</a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <a href={{path("front-office-books-finder-books-by-style")}}>Les livres suivant un critère ?styles=xxx dans l'url</a>
+                </td>
+                <td>
+                    <a href={{path("front-office-books-book-by-id-range")}}?min=50&max=600>Livre entre 2 ids ( ?min=xxx&max=xxx )</a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <a href={{  path("front-office-books-finder-book-by-id", {"id":1} )  }}>Un livre via son id passé en url</a>
+                    <br>
+                    /{id}
+                </td>
+                <td>
+                    <a href={{path("front-office-books-doc-author-name-start-by")}}?s=v>Documents dont le nom de famille de l'auteur commence par une lettre donnée (?s=x)</a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <a href={{  path("front-office-books-finder-book-by-id-and-format", {"id":1, "_format":"json"} )  }}>Récupérer un livre via son id au format désiré (json)</a>
+                    <br>
+                    <a href={{  path("front-office-books-finder-book-by-id-and-format", {"id":1, "_format":"file"} )  }}>Récupérer un livre via son id au format désiré (file)</a>
+                    <br>
+                    /{id}/{_format}
+                </td>
+                <td>
+                    <a href={{path("front-office-books-doc-author-name-start-by-and-cat")}}?s=v&c=medieval>Documents dont le nom de famille de l'auteur commence par une lettre et d'une catégorie données(?s=x&c=y)</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+  </div>
+</div>
+{% endblock %}
+

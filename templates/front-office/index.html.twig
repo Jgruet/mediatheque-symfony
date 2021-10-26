@@ -1,5 +1,8 @@
-{% extends 'public/base.html.twig' %} {% block title %}Merignatech'{% endblock
-%} {% block body %} {% if nom_de_la_variable is defined %}
+{% extends 'front-office/base.html.twig' %} {% block title %}Merignatech'{%
+endblock %} {% block body %}
+
+{{ include('front-office/partials/header.html.twig') }} {% if nom_de_la_variable
+is defined %}
 {{ nom_de_la_variable }}
 {% endif %}
 

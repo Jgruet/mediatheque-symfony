@@ -1,0 +1,5 @@
+{% extends "front-office/base.html.twig" %} {% block body %} {% for book in
+allBooks %}
+{{ dump(book) }}
+{{ book.title | wiki }}
+{% endfor %} {% endblock %}

@@ -9,10 +9,12 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 #[Route('/book/form')]
 class BookFormController extends AbstractController
 {
+
     #[Route('/', name: 'book_form_index', methods: ['GET'])]
     public function index(BookRepository $bookRepository): Response
     {
@@ -21,7 +23,8 @@ class BookFormController extends AbstractController
         ]);
     }
 
-    #[Route('/new', name: 'book_form_new', methods: ['GET','POST'])]
+    #[IsGranted('ROLE_LIBRARIAN')]
+    #[Route('/new', name: 'book_form_new', methods: ['GET', 'POST'])]
     public function new(Request $request): Response
     {
         $book = new Book();
@@ -50,7 +53,7 @@ class BookFormController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}/edit', name: 'book_form_edit', methods: ['GET','POST'])]
+    #[Route('/{id}/edit', name: 'book_form_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Book $book): Response
     {
         $form = $this->createForm(BookType::class, $book);
@@ -71,7 +74,7 @@ class BookFormController extends AbstractController
     #[Route('/{id}', name: 'book_form_delete', methods: ['POST'])]
     public function delete(Request $request, Book $book): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$book->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $book->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($book);
             $entityManager->flush();

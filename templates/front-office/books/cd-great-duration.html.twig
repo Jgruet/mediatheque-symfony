@@ -1,12 +1,12 @@
-{% extends "public/base.html.twig" %} {% block body %}
+{% extends "front-office/base.html.twig" %} {% block body %}
 <section class="my-5">
   <div class="row d-flex justify-content-center">
     <div class="col-8">
-      <h2 class="text-center">Books - id from {{ start }} to {{ stop }}</h2>
+      <h2 class="text-center">Cds where duration > average</h2>
       <div class="mt-5">
         <ul>
           {{
-            dump(titles)
+            dump(cds)
           }}
         </ul>
       </div>
