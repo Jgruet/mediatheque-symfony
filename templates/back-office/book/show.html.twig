@@ -1,0 +1,31 @@
+{% extends 'back-office/base.html.twig' %} {% block title %}Admin panel{%
+endblock %} {% block body %}
+<h1>Book</h1>
+
+<table class="table">
+  <tbody>
+    <tr>
+      <th>Id</th>
+      <td>{{ book.id }}</td>
+    </tr>
+    <tr>
+      <th>Title</th>
+      <td>{{ book.title }}</td>
+    </tr>
+    <tr>
+      <th>Code</th>
+      <td>{{ book.code }}</td>
+    </tr>
+    <tr>
+      <th>Nb_page</th>
+      <td>{{ book.nbPage }}</td>
+    </tr>
+  </tbody>
+</table>
+
+<a href="{{ path('book_form_index') }}">back to list</a>
+
+<a href="{{ path('book_form_edit', { id: book.id }) }}">edit</a>
+
+{{ include('back-office/book/_delete_form.html.twig') }}
+{% endblock %}

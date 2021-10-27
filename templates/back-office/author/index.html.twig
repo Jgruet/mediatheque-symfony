@@ -1,0 +1,34 @@
+{% extends 'back-office/base.html.twig' %} {% block title %}Admin panel{%
+endblock %} {% block body %}
+<h1>Author index</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>LastName</th>
+      <th>FirstName</th>
+      <th>actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for author in authors %}
+    <tr>
+      <td>{{ author.id }}</td>
+      <td>{{ author.lastName }}</td>
+      <td>{{ author.firstName }}</td>
+      <td>
+        <a href="{{ path('author_form_show', { id: author.id }) }}">show</a>
+        <a href="{{ path('author_form_edit', { id: author.id }) }}">edit</a>
+      </td>
+    </tr>
+    {% else %}
+    <tr>
+      <td colspan="4">no records found</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+<a href="{{ path('author_form_new') }}">Create new</a>
+{% endblock %}

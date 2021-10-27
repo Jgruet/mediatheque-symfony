@@ -1,8 +1,11 @@
 <!-- Navigation-->
-<nav class="navbar navbar-light bg-ivoire static-top">
+<nav class="navbar navbar-light static-top">
   <div class="container">
     <a class="navbar-brand" href={{path("public-home")}}>Merignatech</a>
     <a href={{path("public-presentation")}}>Presentation</a>
-    <a class="btn btn-primary-grey" href={{path("admin-home")}}>Sign Up</a>
+    <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"  class="btn btn-outline-success btn-sm">Log in</a>
   </div>
 </nav>
+
+
+{{ render(controller('App\\Controller\\SecurityController::loginModal')) }}

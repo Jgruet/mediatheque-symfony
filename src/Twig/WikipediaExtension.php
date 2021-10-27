@@ -32,15 +32,15 @@ class WikipediaExtension extends AbstractExtension
         ];
     }
 
-    public function getFunctions(): array
+    /* public function getFunctions(): array
     {
         return [
             new TwigFunction('function_name', [$this, 'doSomething']),
         ];
-    }
+    } */
 
 
-    public function displayWikipediaLink(string $value)
+    private function displayWikipediaLink(string $value)
     {
         $response = $this->client->request('GET', 'https://en.wikipedia.org/wiki/' . $value);
         $code = $response->getStatusCode();

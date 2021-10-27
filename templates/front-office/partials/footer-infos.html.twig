@@ -1,14 +1,90 @@
-{{ dump(infos) }} <br />
-<pre>
-    {{ dump(current_date) }}
-</pre>
-<pre>
-    {{ dump(day_since_new_years_day) }}
-</pre>
-<pre>
-    {{ dump(current_date_Custom) }}
-</pre>
-<pre>
-    {{ dump(day_since_new_years_day_Custom) }}
-</pre>
-mail de Michel : michel.cadennes@sens-commun.fr
+<div class="container">
+  <div class="row">
+    <i
+      title="Cette section est appelée en utilisant la méthode render(controller('App\\Controller\\FooterInfosController::getInfos')) dans le template parent"
+      class="bi bi-info-circle"
+      style="
+        position: absolute;
+        margin-top: 15px;
+        font-size: 26px;
+        color: #6c757d;
+        max-width: 50px;
+      "
+    ></i>
+    <div
+      class="col-12 d-flex justify-content-center"
+      style="border: 2px dashed lightgrey"
+    >
+      <button
+        class="btn m-3 btn-outline-secondary btn-sm"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#collapseInfos"
+        aria-expanded="false"
+        aria-controls="collapseInfos"
+      >
+        À propos de moi
+      </button>
+      <button
+        class="btn m-3 btn-outline-secondary btn-sm"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#collapseDate"
+        aria-expanded="false"
+        aria-controls="collapseDate"
+      >
+        Service Date
+      </button>
+      <button
+        class="btn m-3 btn-outline-secondary btn-sm"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#collapseDateCustom"
+        aria-expanded="false"
+        aria-controls="collapseDateCustom"
+      >
+        Service DateCustom
+      </button>
+    </div>
+    <div class="col-12 m-3">
+      <div class="collapse" id="collapseInfos">
+        <div class="card card-body">
+          Informations obtenue grâce au composant HttpFoundation\Request :
+          <br />
+          IP du visiteur - {{ infos['ipVisitor'] }} <br />
+          Navigateur web - {{ infos['browser'] }} <br />
+          Langue favorite du navigateur - {{ infos['favLang'] }}
+        </div>
+      </div>
+
+      <div class="collapse" id="collapseDate">
+        <div class="card card-body">
+          Affichage de la date & du nombre de jours écoulés depuis le début de
+          l'année via un Service : <br />
+          Date du jour - {{ current_date }} <br />
+          Nombre de jour depuis le début de l'année écoulé -
+          {{ day_since_new_years_day }} <br />
+        </div>
+      </div>
+
+      <div class="collapse" id="collapseDateCustom">
+        <div class="card card-body">
+          Affichage de la date & du nombre de jours écoulés depuis le début une
+          année spécifique via un Service : <br />
+          Date du jour - {{ current_date_Custom }} <br />
+          Nombre de jour depuis le début de l'année désignée -
+          {{ day_since_new_years_day_Custom }} <br />
+          Le date de référence est définie comme constante d'application dans
+          service.yaml grace à cette notation : <br />
+          parameters: dateOrigin: '1990-01-01' <br />
+          Puis est passée en argument du constructeur du service grâce à cette
+          notation : <br />
+          App\Service\DateServiceCustomizable: arguments: ['%dateOrigin%',
+          '@App\Service\DateService']
+        </div>
+      </div>
+
+      <div class="d-none">mail de Michel : michel.cadennes@sens-commun.fr</div>
+    </div>
+  </div>
+</div>

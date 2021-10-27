@@ -1,0 +1,27 @@
+{% extends 'back-office/base.html.twig' %} {% block title %}Admin panel{%
+endblock %} {% block body %}
+<h1>Author</h1>
+
+<table class="table">
+  <tbody>
+    <tr>
+      <th>Id</th>
+      <td>{{ author.id }}</td>
+    </tr>
+    <tr>
+      <th>LastName</th>
+      <td>{{ author.lastName }}</td>
+    </tr>
+    <tr>
+      <th>FirstName</th>
+      <td>{{ author.firstName }}</td>
+    </tr>
+  </tbody>
+</table>
+
+<a href="{{ path('author_form_index') }}">back to list</a>
+
+<a href="{{ path('author_form_edit', { id: author.id }) }}">edit</a>
+
+{{ include('back-office/author/_delete_form.html.twig') }}
+{% endblock %}

@@ -52,7 +52,7 @@ class UserAuthenticator extends AbstractLoginFormAuthenticator
         }
 
         // renvoi sur cette page après une authentification depuis une page accessible sans être authentifié
-        return new RedirectResponse($this->urlGenerator->generate('home'));
+        return new RedirectResponse($this->urlGenerator->generate('public-home'));
         //throw new \Exception('TODO: provide a valid redirect inside '.__FILE__);
     }
 

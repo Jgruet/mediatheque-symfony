@@ -1,0 +1,10 @@
+{% extends 'back-office/base.html.twig' %} {% block title %}Admin panel{%
+endblock %} {% block body %}
+<h1>Edit User</h1>
+
+{{ include('back-office/user/_form.html.twig', { button_label: 'Update' }) }}
+
+<a href="{{ path('user_index') }}">back to list</a>
+
+{{ include('back-office/user/_delete_form.html.twig') }}
+{% endblock %}

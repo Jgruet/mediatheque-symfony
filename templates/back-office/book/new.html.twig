@@ -1,0 +1,8 @@
+{% extends 'back-office/base.html.twig' %} {% block title %}Admin panel{%
+endblock %} {% block body %}
+<h1>Create new Book</h1>
+
+{{ include('back-office/book/_form.html.twig') }}
+
+<a href="{{ path('book_form_index') }}">back to list</a>
+{% endblock %}

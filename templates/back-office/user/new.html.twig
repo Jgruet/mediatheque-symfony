@@ -1,0 +1,8 @@
+{% extends 'back-office/base.html.twig' %} {% block title %}Admin panel{%
+endblock %} {% block body %}
+<h1>Create new User</h1>
+
+{{ include('back-office/user/_form.html.twig') }}
+
+<a href="{{ path('user_index') }}">back to list</a>
+{% endblock %}

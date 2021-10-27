@@ -1,0 +1,31 @@
+{% extends 'back-office/base.html.twig' %} {% block title %}Admin panel{%
+endblock %} {% block body %}
+<h1>Cd</h1>
+
+<table class="table">
+  <tbody>
+    <tr>
+      <th>Id</th>
+      <td>{{ cd.id }}</td>
+    </tr>
+    <tr>
+      <th>Title</th>
+      <td>{{ cd.title }}</td>
+    </tr>
+    <tr>
+      <th>Code</th>
+      <td>{{ cd.code }}</td>
+    </tr>
+    <tr>
+      <th>Duration</th>
+      <td>{{ cd.duration }}</td>
+    </tr>
+  </tbody>
+</table>
+
+<a href="{{ path('cd_index') }}">back to list</a>
+
+<a href="{{ path('cd_edit', { id: cd.id }) }}">edit</a>
+
+{{ include('back-office/cd/_delete_form.html.twig') }}
+{% endblock %}

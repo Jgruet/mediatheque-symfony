@@ -6,21 +6,31 @@ security:
     Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface: 'auto'
     App\Entity\User:
       algorithm: auto
+    App\Entity\Employee:
+      algorithm: auto
 
   # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
   providers:
     # used to reload user from session & other features (e.g. switch_user)
+    app_employee_provider:
+      entity:
+        class: App\Entity\Employee
+        property: username
     app_user_provider:
       entity:
         class: App\Entity\User
         property: username
+    all_user:
+      chain:
+        providers: ['app_employee_provider', 'app_user_provider']
+    # used to reload user from session & other features (e.g. switch_user)
   firewalls:
     dev:
       pattern: ^/(_(profiler|wdt)|css|images|js)/
       security: false
     main:
       lazy: true
-      provider: app_user_provider
+      provider: all_user #pauser la question à Michel
       custom_authenticator: App\Security\UserAuthenticator
       logout:
         path: app_logout
@@ -41,6 +51,8 @@ security:
     # - { path: ^/profile, roles: ROLE_USER }
 
   role_hierarchy:
-    ROLE_EMPLOYEE: ROLE_USER
+    # Roles publiques : user, member
+    ROLE_MEMBER: ROLE_USER
+    # Roles privés : employee, librarian, admin
     ROLE_LIBRARIAN: ROLE_EMPLOYEE
     ROLE_ADMIN: ROLE_LIBRARIAN

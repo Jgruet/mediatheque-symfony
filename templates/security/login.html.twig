@@ -1,6 +1,5 @@
-{% extends 'public/base.html.twig' %} {% block title %}Log in!{% endblock %} {%
-block body %}
-<form method="post">
+{% extends "front-office/base.html.twig" %} {% block body %}
+<form method="post" action="/login">
   {% if error %}
   <div class="alert alert-danger">
     {{ error.messageKey|trans(error.messageData, 'security') }}
