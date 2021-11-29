@@ -42,6 +42,16 @@ class Document
      */
     private $category;
 
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $nb_views;
+
+    /**
+     * @ORM\Column(type="date")
+     */
+    private $releaseDate;
+
     public function __construct()
     {
         $this->category = new ArrayCollection();
@@ -111,6 +121,30 @@ class Document
     public function removeCategory(Category $category): self
     {
         $this->category->removeElement($category);
+
+        return $this;
+    }
+
+    public function getNbViews(): ?int
+    {
+        return $this->nb_views;
+    }
+
+    public function setNbViews(int $nb_views): self
+    {
+        $this->nb_views = $nb_views;
+
+        return $this;
+    }
+
+    public function getReleaseDate(): ?\DateTimeInterface
+    {
+        return $this->releaseDate;
+    }
+
+    public function setReleaseDate(\DateTimeInterface $releaseDate): self
+    {
+        $this->releaseDate = $releaseDate;
 
         return $this;
     }

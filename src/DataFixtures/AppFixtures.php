@@ -18,7 +18,7 @@ class AppFixtures extends Fixture
     {
         $generator = Factory::create();
         $populator = new Populator($generator, $manager);
-        $populator->addEntity(Author::class, 5, [
+        $populator->addEntity(Author::class, 20, [
             'lastName' => function () use ($generator) {
                 return $generator->lastName();
             },
@@ -34,7 +34,7 @@ class AppFixtures extends Fixture
             ]);
         } */
 
-        $categoryArray = ['novel', 'bd', 'fantasy', 'medieval', 'suspens', 'true story', 'jazz', 'classic'];
+        $categoryArray = ['novel', 'bd', 'fantasy', 'medieval', 'suspens', 'true story', 'jazz', 'classic', 'music', 'tragedy', 'drama'];
         $objectCategoryArray = [];
         foreach ($categoryArray as $categoryName) {
             $category = new Category();
@@ -44,7 +44,7 @@ class AppFixtures extends Fixture
         }
 
 
-        $populator->addEntity(Book::class, 20, [
+        $populator->addEntity(Book::class, 50, [
             'nb_page' => function () use ($generator) {
                 return $generator->numberBetween(80, 500);;
             },
@@ -56,7 +56,7 @@ class AppFixtures extends Fixture
             }
         ]);
 
-        $populator->addEntity(Cd::class, 15, [
+        $populator->addEntity(Cd::class, 50, [
             'duration' => function () use ($generator) {
                 return $generator->numberBetween(180, 4200);;
             },
@@ -75,8 +75,13 @@ class AppFixtures extends Fixture
         $allDocuments = $DocumentRepository->findAll();
 
         foreach ($allDocuments as $document) {
-            $randomCategory = array_rand($objectCategoryArray, 1);
-            $document->addCategory($objectCategoryArray[$randomCategory]);
+            $nb_cat = rand(1, 5);
+            for ($i = 1; $i <= $nb_cat; $i++) {
+                $document->addCategory(array_pop($objectCategoryArray));
+                shuffle($objectCategoryArray);
+            }
+            /*  $randomCategory = array_rand($objectCategoryArray, 1);
+            $document->addCategory($objectCategoryArray[$randomCategory]); */
         }
 
         $manager->flush();

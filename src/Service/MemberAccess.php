@@ -2,13 +2,14 @@
 
 namespace App\Service;
 
+use App\Entity\User;
 use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManager;
 use Symfony\Component\Security\Core\Security;
 
 class MemberAccess
 {
-    private $user;
+    private User $user;
     private $role_user;
     private $base_fees;
     private $em;
@@ -50,7 +51,7 @@ class MemberAccess
         return number_format($fees, 0);
     }
 
-    public function ageReduction($price, $age)
+    private function ageReduction($price, $age)
     {
         if ($age < 10) {
             $price = 0;
@@ -61,14 +62,14 @@ class MemberAccess
         }
         return $price;
     }
-    public function salaryReduction($price, $salary, $nbChildren)
+    private function salaryReduction($price, $salary, $nbChildren)
     {
         $qf = ($salary / 12) / (1 + ($nbChildren / 2));
         $price = $price * ($qf / 1000);
         return $price;
     }
 
-    public function residentReduction($price, $cp)
+    private function residentReduction($price, $cp)
     {
         if ($cp == '33700') {
             $price = $price * 0.8;

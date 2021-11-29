@@ -6,6 +6,7 @@
 parameters:
   dateOrigin: '1990-01-01'
   memberFees: 50
+  maintenance_mode: false
 services:
   # default configuration for services in *this* file
   _defaults:
@@ -40,7 +41,8 @@ services:
       ]
   App\Event\UserRegisterSubscriber:
     arguments: ['@Psr\Log\LoggerInterface']
-
+  App\Event\RedirectMaintenancePage:
+    arguments: ['%maintenance_mode%']
   #signifier manuellement à symfony que la classe WikipediaExtension est une extension twig
   App\Twig\WikipediaExtension:
     tags: ['twig.extension']

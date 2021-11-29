@@ -22,5 +22,29 @@
     "birthDate": "1920-10-8",
     "death": "1986-02-11",
     "biography": "Frank Herbert, né Frank Patrick Herbert, Jr. le 8 octobre 1920 à Tacoma dans l'État de Washington et mort le 11 février 1986 (à 65 ans) à Madison dans le Wisconsin, est un écrivain américain, auteur de romans de science-fiction."
-  }
+  },
+  {
+     "id": 4,
+     "firstName": "Frank",
+     "lastName": "Miller",
+     "birthDate": "1957-01-21",
+     "death": "",
+     "biography": "Frank Miller, né le 27 janvier 1957 à Olney dans le Maryland, est un auteur de bandes dessinées américain, également scénariste de films et réalisateur. Connu pour ses histoires de bandes dessinées comme Ronin, Batman: Dark Knight, Daredevil: Born Again, Batman : Année Une, Sin City et 300. Quand il devient scénariste de la série Daredevil, il crée l'organisation criminelle la Main et le personnage d'Elektra Natchios. Au cinéma, il a écrit les scénarios des films RoboCop 2 et RoboCop 3. Il a réalisé l'adaptation de la bande dessinée The Spirit, d'après l’œuvre de Will Eisner. Il a adapté certaines de ses œuvres, il a produit 300 et 300 : La Naissance d'un Empire et il a co-réalisé Sin City et Sin City : J'ai tué pour elle. "
+   }
+    {
+      "id": 4,
+      "firstName": "Frank",
+      "lastName": "Miller",
+      "birthDate": "1957-01-21",
+      "death": "",
+      "biography": "Frank Miller, né le 27 janvier 1957 à Olney dans le Maryland, est un auteur de bandes dessinées américain, également scénariste de films et réalisateur. Connu pour ses histoires de bandes dessinées comme Ronin, Batman: Dark Knight, Daredevil: Born Again, Batman : Année Une, Sin City et 300. Quand il devient scénariste de la série Daredevil, il crée l'organisation criminelle la Main et le personnage d'Elektra Natchios. Au cinéma, il a écrit les scénarios des films RoboCop 2 et RoboCop 3. Il a réalisé l'adaptation de la bande dessinée The Spirit, d'après l’œuvre de Will Eisner. Il a adapté certaines de ses œuvres, il a produit 300 et 300 : La Naissance d'un Empire et il a co-réalisé Sin City et Sin City : J'ai tué pour elle. "
+    },
+    {
+     "id": 5,
+     "firstName": "Amy",
+     "lastName": "Santiago",
+     "birthDate": "1983-04-21",
+     "death": "",
+     "biography": "Amy is an incredibly ambitious and driven detective who always strives for perfection in nearly everything she does."
+   }
 ]

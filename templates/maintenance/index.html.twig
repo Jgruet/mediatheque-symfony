@@ -1,0 +1,35 @@
+<div id="maintenance-page">
+  <p>
+    Gestion de la page de maintenance grâce à la classe
+    /Event/RedirectMaintenancePage.php
+  </p>
+  <p>
+    Cette classe est un EventSubscriber qui se branche sur l'Event
+    KernelEvents::REQUEST et lance la fonction onKernelRequest.
+  </p>
+  <p>
+    onKernelRequest se charge de renvoyer la Response contenant le template
+    twig, avec un code 503 et un header 'Retry-After'
+  </p>
+  <p>
+    Pour activer/désactiver le mode maintenance, il faut changer la valeur de la
+    constante de configuration maintenace_mode dans services.yaml
+  </p>
+</div>
+<style>
+  * {
+    margin: 0;
+  }
+  #maintenance-page {
+    height: 100vh;
+    width: 100vw;
+    margin: 0;
+    padding: 0;
+    background-image: url('https://www.gouvieux.fr/images/site/page_maintenance.png');
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+  #maintenance-page p {
+    padding: 15px;
+  }
+</style>

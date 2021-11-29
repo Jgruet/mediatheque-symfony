@@ -36,12 +36,21 @@
     "synopsis": "Il perd au backjack, s'énerve, couche avec la plus belle femme qu'il trouve."
   },
   {
-    "id": 5,
-    "authorId": 2,
-    "cote": 2205,
-    "title": "Docteur No",
-    "release": "1958",
-    "styles": ["novel", "fantasy", "thriller"],
-    "synopsis": "James Bond contre Docteur No, cela fait-il de James Bond une version armée de Oui-Oui ?"
+    "id": 10,
+    "authorId": 4,
+    "cote": 3005,
+    "title": "Batman: Year One",
+    "release": "2020",
+    "styles": ["action", "suspens", "thriller"],
+    "synopsis": "Le lieutenant James Gordon débarque à Gotham City avec pour ordre de mettre fin aux agissements d'une police corrompue,"
+  },
+  {
+    "id": 11,
+    "authorId": 5,
+    "cote": 2505,
+    "title": "Kind, Sober and Fully Dressed",
+    "release": "2013",
+    "styles": ["Sextape"],
+    "synopsis": "Can you magically make everyone kind, sober and fully dressed?"
   }
 ]

@@ -43,6 +43,16 @@ class Author
      */
     private $documents;
 
+    /**
+     * @ORM\Column(type="date")
+     */
+    private $birthday;
+
+    /**
+     * @ORM\Column(type="date")
+     */
+    private $death;
+
     public function __construct()
     {
         $this->documents = new ArrayCollection();
@@ -110,5 +120,29 @@ class Author
     public function __toString()
     {
         return $this->firstName . ' ' . $this->lastName;
+    }
+
+    public function getBirthday(): ?\DateTimeInterface
+    {
+        return $this->birthday;
+    }
+
+    public function setBirthday(\DateTimeInterface $birthday): self
+    {
+        $this->birthday = $birthday;
+
+        return $this;
+    }
+
+    public function getDeath(): ?\DateTimeInterface
+    {
+        return $this->death;
+    }
+
+    public function setDeath(\DateTimeInterface $death): self
+    {
+        $this->death = $death;
+
+        return $this;
     }
 }

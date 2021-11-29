@@ -64,4 +64,13 @@ class EmployeeRepository extends ServiceEntityRepository implements PasswordUpgr
         ;
     }
     */
+
+    public function findOneByUsername($value): ?Employee
+    {
+        return $this->createQueryBuilder('e')
+            ->andWhere('e.username = :val')
+            ->setParameter('val', $value)
+            ->getQuery()
+            ->getOneOrNullResult();
+    }
 }

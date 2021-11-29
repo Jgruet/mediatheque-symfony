@@ -10,6 +10,8 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+use App\Event\DocumentPrintEvent;
+use Symfony\Contracts\EventDispatcher\EventDispatcherInterface;
 
 #[Route('admin/books')]
 class AdminBookController extends AbstractController
@@ -46,8 +48,14 @@ class AdminBookController extends AbstractController
     }
 
     #[Route('/{id}', name: 'book_form_show', methods: ['GET'])]
-    public function show(Book $book): Response
+    public function show(Book $book, EventDispatcherInterface $dispatcher): Response
     {
+
+        // Fire event
+        $event = new DocumentPrintEvent($book);
+        $dispatcher->dispatch($event, DocumentPrintEvent::NAME);
+
+
         return $this->render('back-office/book/show.html.twig', [
             'book' => $book,
         ]);
