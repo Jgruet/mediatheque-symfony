@@ -1,6 +1,40 @@
 {% extends "front-office/base.html.twig" %} {% block body %}
 <div class="container">
   <div class="row">
+  <h1>Book index</h1>
+
+    <table class="table">
+    <thead>
+        <tr>
+        <th>Id</th>
+        <th>Title</th>
+        <th>Code</th>
+        <th>Nb_page</th>
+        <th>actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for book in books %}
+        <tr>
+        <td>{{ book.id }}</td>
+        <td>{{ book.title }}</td>
+        <td>{{ book.code }}</td>
+        <td>{{ book.nbPage }}</td>
+        <td>
+            <a href="{{ path('front-office-books-public_book_form_show', { id: book.id }) }}">show</a>
+        </td>
+        </tr>
+        {% else %}
+        <tr>
+        <td colspan="5">no records found</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+    </table>
+
+<a href="{{ path('book_form_new') }}">Create new</a>
+  </div>
+  <div class="row">
     <div class="text-center">
       <h1>Les livres</h1>
       <p>

@@ -1,0 +1,39 @@
+{% extends 'back-office/base.html.twig' %} {% block title %}Admin panel{%
+endblock %}
+{% block body %}
+    <h1>Borrow index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Start_at</th>
+                <th>End_at</th>
+                <th>Day_late</th>
+                <th>Active</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for borrow in borrows %}
+            <tr>
+                <td>{{ borrow.id }}</td>
+                <td>{{ borrow.startAt ? borrow.startAt|date('Y-m-d') : '' }}</td>
+                <td>{{ borrow.endAt ? borrow.endAt|date('Y-m-d') : '' }}</td>
+                <td>{{ borrow.dayLate }}</td>
+                <td>{{ borrow.active ? 'Yes' : 'No' }}</td>
+                <td>
+                    <a href="{{ path('admin_borrow_show', {'id': borrow.id}) }}">show</a>
+                    <a href="{{ path('admin_borrow_edit', {'id': borrow.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('admin_borrow_new') }}">Create new</a>
+{% endblock %}

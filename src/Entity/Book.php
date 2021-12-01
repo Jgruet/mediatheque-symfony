@@ -17,7 +17,7 @@ class Book extends Document
      * @ORM\Column(type="integer")
      */
     #[Assert\LessThan(2001, null, 'please its too big')]
-    #[Assert\GreaterThan(100000, null, 'please its too small')]
+    #[Assert\GreaterThan(10, null, 'please its too small')]
     private $nb_page;
 
     public function getNbPage(): ?int

@@ -2,28 +2,29 @@
 
 namespace App\Form;
 
-use App\Entity\Author;
+use App\Entity\Borrow;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\CollectionType;
-use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class AuthorType extends AbstractType
+class BorrowType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('lastName')
-            ->add('firstName')
-            ->add('birthday', DateType::class)
-            ->add('death', DateType::class);
+            ->add('start_at')
+            ->add('end_at')
+            ->add('day_late')
+            ->add('active')
+            ->add('user')
+            ->add('document')
+        ;
     }
 
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'data_class' => Author::class,
+            'data_class' => Borrow::class,
         ]);
     }
 }

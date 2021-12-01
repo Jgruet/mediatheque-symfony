@@ -28,6 +28,7 @@ class CommentBookVoter extends Voter
         switch ($attribute) {
             case 'POST_EDIT':
                 // logic to determine if the user can EDIT
+                // exemple : si le commentaire a été écrit par l'utilisateur connecté actuellement, il peut le modifier
                 // return true or false
                 break;
             case 'POST_VIEW':

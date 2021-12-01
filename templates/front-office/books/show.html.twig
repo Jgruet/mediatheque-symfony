@@ -1,0 +1,73 @@
+{% extends 'front-office/base.html.twig' %} {% block title %}Admin panel{%
+endblock %} {% block body %}
+<h1>Book</h1>
+
+<table class="table">
+  <tbody>
+    <tr>
+      <th>Id</th>
+      <td>{{ book.id }}</td>
+    </tr>
+    <tr>
+      <th>Title</th>
+      <td>{{ book.title }}</td>
+    </tr>
+    <tr>
+      <th>Code</th>
+      <td>{{ book.code }}</td>
+    </tr>
+    <tr>
+      <th>Nb_page</th>
+      <td>{{ book.nbPage }}</td>
+    </tr>
+  </tbody>
+</table>
+
+<button
+  id="borrowDoc"
+  class="btn btn-success"
+  {% if disable == 1 %}disabled{% endif %}
+  data-book-id='{{book.id}}'
+  data-user-id='{{user}}'
+  title='{% if disable == 1 %}{{titleBtn}}{% else %}Emprunter le document{% endif %}'>
+  Emprunter
+</button>
+
+{# read and display just one flash message type #}
+  {% for message in app.flashes('borrowStatus') %}
+      <div class="flash-notice">
+          {{ message }}
+      </div>
+  {% endfor %}
+
+{#
+<a href="{{ path('book_form_index') }}">back to list</a>
+
+<a href="{{ path('book_form_edit', { id: book.id }) }}">edit</a>
+
+{{ include('back-office/book/_delete_form.html.twig') }} #}
+
+<!-- Button trigger modal -->
+{# <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal2">
+  Launch demo modal
+</button> #}
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

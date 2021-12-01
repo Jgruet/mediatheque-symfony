@@ -52,6 +52,11 @@ class Document
      */
     private $releaseDate;
 
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $conservation;
+
     public function __construct()
     {
         $this->category = new ArrayCollection();
@@ -145,6 +150,18 @@ class Document
     public function setReleaseDate(\DateTimeInterface $releaseDate): self
     {
         $this->releaseDate = $releaseDate;
+
+        return $this;
+    }
+
+    public function getConservation(): ?int
+    {
+        return $this->conservation;
+    }
+
+    public function setConservation(?int $conservation): self
+    {
+        $this->conservation = $conservation;
 
         return $this;
     }

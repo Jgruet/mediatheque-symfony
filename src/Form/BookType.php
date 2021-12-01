@@ -8,6 +8,8 @@ use App\Entity\Category;
 use Doctrine\ORM\EntityRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -19,8 +21,14 @@ class BookType extends AbstractType
             ->add('title')
             ->add('code')
             ->add('nb_page')
-            //->add('author')
-            ->add('author', AuthorType::class) //pour avoir un sous formulaire qui permet de créer des auteurs à la vollée
+            ->add('author')
+            ->add('release_date', DateType::class, [
+                'widget' => 'single_text',
+            ])
+            ->add('nb_views', HiddenType::class, [
+                'data' => 0,
+            ])
+            //->add('author', AuthorType::class) //pour avoir un sous formulaire qui permet de créer des auteurs à la vollée
             ->add('category', EntityType::class, [
                 'multiple' => true,
                 'expanded' => true,

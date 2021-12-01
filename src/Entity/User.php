@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\EquatableInterface;
@@ -67,6 +69,21 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, Equatab
      * @ORM\Column(type="string", length=255)
      */
     private $postal_code;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Borrow::class, mappedBy="user")
+     */
+    private $borrows;
+
+    /**
+     * @ORM\OneToOne(targetEntity=Penalty::class, mappedBy="user", cascade={"persist", "remove"})
+     */
+    private $penalty;
+
+    public function __construct()
+    {
+        $this->borrows = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -238,5 +255,57 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, Equatab
         }
 
         return false;
+    }
+
+    /**
+     * @return Collection|Borrow[]
+     */
+    public function getBorrows(): Collection
+    {
+        return $this->borrows;
+    }
+
+    public function addBorrow(Borrow $borrow): self
+    {
+        if (!$this->borrows->contains($borrow)) {
+            $this->borrows[] = $borrow;
+            $borrow->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeBorrow(Borrow $borrow): self
+    {
+        if ($this->borrows->removeElement($borrow)) {
+            // set the owning side to null (unless already changed)
+            if ($borrow->getUser() === $this) {
+                $borrow->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getPenalty(): ?Penalty
+    {
+        return $this->penalty;
+    }
+
+    public function setPenalty(?Penalty $penalty): self
+    {
+        // unset the owning side of the relation if necessary
+        if ($penalty === null && $this->penalty !== null) {
+            $this->penalty->setUser(null);
+        }
+
+        // set the owning side of the relation if necessary
+        if ($penalty !== null && $penalty->getUser() !== $this) {
+            $penalty->setUser($this);
+        }
+
+        $this->penalty = $penalty;
+
+        return $this;
     }
 }
