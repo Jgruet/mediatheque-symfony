@@ -16,13 +16,15 @@ class MemberAccess
 
     public function __construct(Security $security, int $memberFees, EntityManager $em)
     {
-        $this->user = $security->getUser();
-        $this->role_user = $security->getUser()->getRoles();
-        $this->base_fees = $memberFees;
-        $this->em = $em;
+        if ($security->getUser() != NULL) {
+            $this->user = $security->getUser();
+            $this->role_user = $security->getUser()->getRoles();
+            $this->base_fees = $memberFees;
+            $this->em = $em;
+        }
     }
 
-    public function checkAccess()
+    public function checkAccess(): array
     {
         $infos = [];
         $infos['access'] = false;

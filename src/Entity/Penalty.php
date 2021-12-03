@@ -23,7 +23,7 @@ class Penalty
     private $end_at;
 
     /**
-     * @ORM\OneToOne(targetEntity=User::class, inversedBy="penalty", cascade={"persist", "remove"})
+     * @ORM\OneToOne(targetEntity=User::class, inversedBy="penalty", cascade={"persist"})
      */
     private $user;
 

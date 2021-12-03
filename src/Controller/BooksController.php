@@ -11,6 +11,7 @@ use App\Repository\DocumentRepository;
 use App\Repository\PenaltyRepository;
 use App\Repository\UserRepository;
 use App\Service\BorrowService;
+use DateTime;
 use Doctrine\Persistence\ManagerRegistry;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -236,8 +237,10 @@ class BooksController extends AbstractController
             }
 
             // L'utilisateur est-il sous le coup d'une pénalité ?
+
+
             $checkPenalty = $penaltyRepository->findOneBy(['user' => $security->getUser()]);
-            if ($checkPenalty != NULL) {
+            if ($checkPenalty != NULL && $checkPenalty->getEndAt() > new DateTime()) {
                 $underPenalty = true;
             }
             if ($underPenalty) {
@@ -270,6 +273,7 @@ class BooksController extends AbstractController
             'user' => isset($userId) ? $userId : '',
             'disable' => (!$available || !$userGranted || $underPenalty || !$userConnected) ? 1 : 0,
             'titleBtn' => (!$available || !$userGranted || $underPenalty || !$userConnected) ? 'Document indisponible' : NULL,
+            'underPenalty' => ($underPenalty) ? true : false
         ]);
     }
 

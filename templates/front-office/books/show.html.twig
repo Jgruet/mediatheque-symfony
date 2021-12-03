@@ -39,6 +39,10 @@ endblock %} {% block body %}
           {{ message }}
       </div>
   {% endfor %}
+  {% if underPenalty == true %}
+    <a href="{# {{ path('book_form_edit', { id: user.id }) }} #}">Payer l'amende</a>
+  {% endif %}
+
 
 {#
 <a href="{{ path('book_form_index') }}">back to list</a>
